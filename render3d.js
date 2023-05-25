@@ -72,9 +72,9 @@ var createRenderEngine3d = function (canvasTarget) {
         document.body.appendChild(renderer.domElement)
         renderer.render(scene, camera)
 
-        // CREATE ZE CUBE BABY
+        // CREATE THE CUBE 
         var geometry = new THREE.BoxGeometry(1,1,1)
-        // CREATE BASICFIT
+        // CREATE BASICMATERIAL
         var material = new THREE.MeshBasicMaterial({color:0x00ff00})
         cube = new THREE.Mesh(geometry, material)
         scene.add(cube)
