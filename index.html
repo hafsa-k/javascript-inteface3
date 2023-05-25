@@ -10,33 +10,21 @@
 <body>
     <!--   commentaire -->
     <section id="header">   
-        <div id="menu">
-            <menu>
-                <a href="#">Header</a>
-                <a href="#">section1</a>
-                <a href="#">section2</a>
-                <a href="#">section3</a>
-                <a href="#">section4</a>
-                
-            </menu>
-        </div>
-        <h1>Mon petit titre</h1>
-        <div id="premiere_partie">
-            <p>Voici un petit texte, qui n'a pas vraiment une grande importance </p>
-            <br>
-            <p>juste au dessus s'était un br, br nous permet de faire un allez à la ligne</p>
-            <hr>
-            <p>Et là s'était un hr, hr nous permet de faire une ligne</p>
-        </div>
-
-        <p class="button">Click me!!!</p>
-        <canvas class="render2d" height="500" width="800"></canvas>
-        <p class="talking_area">target!</p>
+        <canvas class="renderTarget" height="500" width="800"></canvas>
     </section>
 
 
 
 <!-- script-->
+<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@v0.152.2/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@v0.152.2/examples/jsm/"
+    }
+  }
+</script>
 
 <script type="module" src="./index.js"></script>
 </body>

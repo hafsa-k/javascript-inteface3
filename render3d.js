@@ -44,22 +44,48 @@ var createCharac = function(name, pv,tex){
     return self
 }
 
-var createRenderEngine = function (canvasTarget) {
+var createRenderEngine3d = function (canvasTarget) {
     var self = {};
-    var posInit=0;
+    var posInit=100;
     var posY = 200;
     var state = undefined;
     var isJumping = false; 
     var isFalling = false; 
-    var speed = 2;
+    var speed = 1;
     var jumpspeed = 5;
     var img = new Image();
     img.src = "./img/pc.png";
     console.log(img);
+    // Variable globale
+    var scene = undefined; 
+    var camera = undefined;
+    var lamp = undefined;
+    var mech = undefined;
+    var renderer = undefined;
+    var cube = undefined;
+
+    var createEnv = function () {
+        scene = new THREE.Scene()
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000)
+        renderer = new THREE.WebGLRenderer()
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        document.body.appendChild(renderer.domElement)
+        renderer.render(scene, camera)
+
+        // CREATE ZE CUBE BABY
+        var geometry = new THREE.BoxGeometry(1,1,1)
+        // CREATE BASICFIT
+        var material = new THREE.MeshBasicMaterial({color:0x00ff00})
+        cube = new THREE.Mesh(geometry, material)
+        scene.add(cube)
+        camera.position.z = 5
+        //renderer.render(scene, camera)
+    }
 
     var init = function(){
         var canvas = document.querySelector(canvasTarget)
         var ctx = canvas.getContext("2d")
+        createEnv()
        // ctx.fillStyle = "red"
         //ctx.fillRect(25,5,100,10)
         //ctx.fillStyle = "blue"
@@ -70,6 +96,7 @@ var createRenderEngine = function (canvasTarget) {
             console.log(event);
             if (event.key =="d"|| event.key =="ArrowRight") {
                 state = "right";
+                cube.rotation.x = cube.rotation.x+0.1
      
             }
             if (event.key =="q" || event.key =="ArrowLeft") {
@@ -104,6 +131,8 @@ var createRenderEngine = function (canvasTarget) {
             ctx.drawImage(img, posInit, posY)
             //console.log(posInit)
             //ctx.fillRect(posInit,posY,50,50);
+            renderer.render(scene, camera)
+            
         }
 
         var process = function(){
@@ -148,4 +177,4 @@ var createRenderEngine = function (canvasTarget) {
 
     return self
 }
-export{createCharac, createRenderEngine}
+export{createRenderEngine3d}

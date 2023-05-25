@@ -1,5 +1,6 @@
 //import {startDialogue} from "./main2.js";
 import { createCharac, createRenderEngine } from "./render2d.js";
+import { createRenderEngine3d} from "./render3d.js";
 //import { add, minus } from "./utils.js";
 
 //startDialogue();
@@ -8,7 +9,8 @@ import { createCharac, createRenderEngine } from "./render2d.js";
 var martine = createCharac("martine",100, "./img/pc.png", 50 ,70);
 var pyta = createCharac("pyta",100);
 
-createRenderEngine(".render2d")
+//createRenderEngine(".render2d")
+createRenderEngine3d(".renderTarget")
 // console.log(martine.getPv());
 // console.log(martine.getDamage(18));
 // console.log(martine.getPv());
